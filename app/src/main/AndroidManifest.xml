@@ -27,8 +27,13 @@
             android:label="@string/title_activity_chat_room"></activity>
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search"></activity>
-        <activity android:name=".EventActivity"></activity>
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".SharingActivity"
+            android:label="@string/title_activity_sharing" >
+        </activity>
+
     </application>
 
 </manifest>
