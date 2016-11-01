@@ -1,6 +1,8 @@
 package hkust.fypta1;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,11 +53,10 @@ public class CalendarActivity extends AppCompatActivity {
         yearText = (TextView) findViewById(R.id.Year);
         monthText = (TextView) findViewById(R.id.Month);
         TextView txtyr = (TextView) findViewById(R.id.textForYear);
-        yearText.setText(Integer.toString(year));
-        yearText.setTypeface(face);
-        monthText.setText(new SimpleDateFormat("MMM").format(c.getTime()));
-        monthText.setTypeface(face);
-        txtyr.setTypeface(face);
+
+        setAllAttr(yearText, Integer.toString(year), face, Color.BLACK);
+        setAllAttr(monthText, new SimpleDateFormat("MMM").format(c.getTime()), face, Color.BLACK);
+        setAllAttr(txtyr, "Year", face, Color.BLACK);
 
         //Binding the grid view by day images and set the theme image
         gv_cal = (GridView) findViewById(R.id.CalendarGrid);
@@ -77,7 +78,7 @@ public class CalendarActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.toolbar_item, menu);
         return true;
     }
 
@@ -151,4 +152,10 @@ public class CalendarActivity extends AppCompatActivity {
             popup.dismiss();
         }
     };
+
+    private void setAllAttr(TextView txtview, String text, Typeface face, int color) {
+        txtview.setTextColor(color);
+        txtview.setText(text);
+        txtview.setTypeface(face);
+    }
 }

@@ -1,5 +1,6 @@
 package hkust.fypta1;
 
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -61,6 +62,7 @@ public class TextAdapter extends BaseAdapter
         }
 
         textview.setGravity(Gravity.LEFT & Gravity.TOP);
+        textview.setTextColor(Color.BLACK);
         //textview.setLayoutParams(new GridView.LayoutParams(96, 96));
         if (index + 1 >= WeekDay && index < dayOfMonth + WeekDay - 1) {
             textview.setBackgroundResource(imgResource[imgsetting]);
