@@ -12,14 +12,14 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
- * Created by kongchingyiii on 7/9/16.
+ * Created by kongchingyiii on 5/10/16.
  */
 
-public class CustomListAdapter extends BaseAdapter {
-    private ArrayList<Follower> listData;
+public class ChatListAdapter extends BaseAdapter {
+    private ArrayList<Chat> listData;
     private LayoutInflater layoutInflater;
 
-    public CustomListAdapter(Context aContext, ArrayList<Follower> listData) {
+    public ChatListAdapter(Context aContext, ArrayList<Chat> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
@@ -42,19 +42,21 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.follower_row, null);
+            convertView = layoutInflater.inflate(R.layout.chat_row, null);
             holder = new ViewHolder();
-            holder.iconView = (ImageView) convertView.findViewById(R.id.icon);
+            holder.pictureView = (ImageView) convertView.findViewById(R.id.chatIcon);
 
-            holder.userNameView = (TextView) convertView.findViewById(R.id.chatName);
+            holder.chatNameView = (TextView) convertView.findViewById(R.id.chatName);
+            holder.msgView = (TextView) convertView.findViewById(R.id.msgReview);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
 
-        holder.iconView.setImageResource(getId(listData.get(position).getUserIcon(),R.drawable.class));
-        holder.userNameView.setText( listData.get(position).getFollowerName());
+        holder.pictureView.setImageResource(getId(listData.get(position).getChatIcon(),R.drawable.class));
+        holder.chatNameView.setText( listData.get(position).getChatName());
+        holder.msgView.setText(listData.get(position).getMsgList().get(0).getMessageText());
 
         return convertView;
     }
@@ -70,8 +72,9 @@ public class CustomListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ImageView iconView;
-        TextView userNameView;
+        ImageView pictureView;
+        TextView chatNameView;
+        TextView msgView;
 
     }
 }

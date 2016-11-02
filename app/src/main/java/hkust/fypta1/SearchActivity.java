@@ -1,9 +1,12 @@
 package hkust.fypta1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -11,6 +14,66 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
+        eventButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),EventActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
+        calendarButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
+        followerButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
+        chatButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
     }
 
     @Override

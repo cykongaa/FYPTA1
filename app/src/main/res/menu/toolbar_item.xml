@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
         <item
             android:id="@+id/eventPage"
-            android:icon="@mipmap/cat"
+            android:icon="@drawable/usermainicon"
             app:showAsAction="ifRoom"
             android:title="Event">
         </item>
         <item
             android:id="@+id/CalendarPage"
-            android:icon="@mipmap/cat"
+            android:icon="@drawable/usermainicon"
             app:showAsAction="ifRoom|withText"
             android:title="Calendar">
         </item>
         <item
             android:id="@+id/SearchPage"
-            android:icon="@mipmap/cat"
+            android:icon="@drawable/usermainicon"
             app:showAsAction="ifRoom"
             android:title="Search">
         </item>
         <item
             android:id="@+id/FollowerPage"
-            android:icon="@mipmap/cat"
+            android:icon="@drawable/usermainicon"
             app:showAsAction="ifRoom"
             android:title="Follower">
         </item>
         <item
             android:id="@+id/ChatRoomPage"
-            android:icon="@mipmap/cat"
+            android:icon="@drawable/usermainicon"
             app:showAsAction="ifRoom"
             android:title="ChatRoom">
         </item>

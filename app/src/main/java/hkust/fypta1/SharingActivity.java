@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,66 @@ public class SharingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharing);
+
+        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
+        eventButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),EventActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
+        calendarButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
+        followerButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
+        chatButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
 
         Intent intent = getIntent();
         followerData = (Follower) intent.getExtras().getSerializable("follower");
