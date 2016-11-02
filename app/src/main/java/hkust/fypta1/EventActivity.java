@@ -3,12 +3,19 @@ package hkust.fypta1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
-public class EventActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class EventActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private ArrayList<Event> eventList;
+    private ListView evntList;
+    private EventListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,28 +81,33 @@ public class EventActivity extends AppCompatActivity {
             finish(); */
             }
         });
-    }
 
+        evntList = (ListView) findViewById(R.id.listView);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.toolbar_item, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        ArrayList<Event> test = new ArrayList<Event>();
+        for(int i = 0; i < 8; i++) {
+            Event evt = new Event(i, i);
+            test.add(evt);
         }
+        eventList = test;
+        View view = findViewById(R.id.listView);
+        adapter =  new EventListAdapter(this, test);
 
-        return super.onOptionsItemSelected(item);
+        evntList.setAdapter(adapter);
+
     }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            //To control the click event of different clickable items
+            case R.id.EventImage:
+                //To navigate to Event Detail Page
+                break;
+
+            default:
+                break;
+        }
+    }
+
 }

@@ -55,8 +55,8 @@ public class ChatListAdapter extends BaseAdapter {
 
 
         holder.pictureView.setImageResource(getId(listData.get(position).getChatIcon(),R.drawable.class));
-        holder.chatNameView.setText( listData.get(position).getChatName());
-        holder.msgView.setText(listData.get(position).getMsgList().get(0).getMessageText());
+        holder.msgView.setText( listData.get(position).getChatName());
+        holder.chatNameView.setText(listData.get(position).getMsgList().get(0).getMessageText());
 
         return convertView;
     }

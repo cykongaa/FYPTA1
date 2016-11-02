@@ -10,7 +10,6 @@
         android:id="@+id/chatName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:typeface="sans"
         android:layout_marginLeft="68dp"
         android:layout_marginStart="68dp"
@@ -19,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/icon"
         android:layout_toEndOf="@+id/icon"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/msgReview"
@@ -31,7 +31,8 @@
         android:text="hhhhhhhh"
         android:layout_below="@+id/icon"
         android:layout_alignLeft="@+id/chatName"
-        android:layout_alignStart="@+id/chatName" />
+        android:layout_alignStart="@+id/chatName"
+        android:textColor="@android:color/black" />
 
     <ImageView
 
