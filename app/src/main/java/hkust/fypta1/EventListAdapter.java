@@ -23,7 +23,8 @@ public class EventListAdapter extends BaseAdapter {
     private ArrayList<Event> events = new ArrayList();
     private final Context context;
     private LayoutInflater aInflater;
-    private Integer[] imgResource = {R.mipmap.aeon,R.mipmap.mfestival,R.mipmap.diy,R.mipmap.goodstuff,R.mipmap.halloween,R.mipmap.hmv_outlet,R.mipmap.hotle,R.mipmap.hotpot };
+    private Integer[] imgResource = {R.drawable.aeon,R.drawable.mfestival,R.drawable.diy,
+            R.drawable.good_stuff,R.drawable.halloween,R.drawable.hmv_outlet,R.drawable.hotel,R.drawable.hotpot };
     private static class ViewHolder {
         public TextView evtTxt;
         public TextView evtTxt2;
