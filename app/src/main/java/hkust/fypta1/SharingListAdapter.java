@@ -12,14 +12,14 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
- * Created by kongchingyiii on 7/9/16.
+ * Created by kongchingyiii on 5/10/16.
  */
 
-public class CustomListAdapter extends BaseAdapter {
-    private ArrayList<Follower> listData;
+public class SharingListAdapter extends BaseAdapter {
+    private ArrayList<Sharing> listData;
     private LayoutInflater layoutInflater;
 
-    public CustomListAdapter(Context aContext, ArrayList<Follower> listData) {
+    public SharingListAdapter(Context aContext, ArrayList<Sharing> listData) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
@@ -42,19 +42,19 @@ public class CustomListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.follower_row, null);
+            convertView = layoutInflater.inflate(R.layout.sharing_row, null);
             holder = new ViewHolder();
-            holder.iconView = (ImageView) convertView.findViewById(R.id.icon);
+            holder.pictureView = (ImageView) convertView.findViewById(R.id.picture);
 
-            holder.userNameView = (TextView) convertView.findViewById(R.id.followName);
+            holder.contentView = (TextView) convertView.findViewById(R.id.content);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
 
-        holder.iconView.setImageResource(getId(listData.get(position).getUserIcon(),R.drawable.class));
-        holder.userNameView.setText( listData.get(position).getFollowerName());
+        holder.pictureView.setImageResource(getId(listData.get(position).getPhoto(),R.drawable.class));
+        holder.contentView.setText( listData.get(position).getContent());
 
         return convertView;
     }
@@ -70,8 +70,8 @@ public class CustomListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ImageView iconView;
-        TextView userNameView;
+        ImageView pictureView;
+        TextView contentView;
 
     }
 }
