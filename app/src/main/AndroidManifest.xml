@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".EventActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +18,18 @@
         </activity>
         <activity
             android:name=".CalendarActivity"
-            android:label="@string/title_activity_calendar"></activity>
+            android:label="@string/title_activity_calendar" />
         <activity
             android:name=".FollowerActivity"
-            android:label="@string/title_activity_follower"></activity>
+            android:label="@string/title_activity_follower" />
         <activity
             android:name=".ChatRoomActivity"
-            android:label="@string/title_activity_chat_room"></activity>
+            android:label="@string/title_activity_chat_room" />
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search"></activity>
-        <activity android:name=".ChatActivity"></activity>
+            android:label="@string/title_activity_search" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
