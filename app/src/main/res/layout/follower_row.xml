@@ -16,7 +16,6 @@
         android:layout_toEndOf="@+id/icon"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="37dp"
-        android:text="follower"
         android:focusable="false"/>
 
 
