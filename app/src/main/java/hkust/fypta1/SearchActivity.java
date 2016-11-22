@@ -1,9 +1,11 @@
 package hkust.fypta1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -16,7 +18,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.toolbar_item, menu);
         return true;
     }
 
@@ -33,5 +35,17 @@ public class SearchActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void searchEvt() {
+        String searchtxt = ((TextView) findViewById(R.id.Criteria)).getText().toString();
+        Intent toSearch = new Intent(this, SearchResultActivity.class);
+        if (!searchtxt.trim().equals("")) {
+            toSearch.putExtra("searchTxt", searchtxt);
+            startActivity(toSearch);
+        }
+        else {
+
+        }
     }
 }

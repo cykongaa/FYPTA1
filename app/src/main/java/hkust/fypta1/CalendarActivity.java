@@ -1,7 +1,6 @@
 package hkust.fypta1;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.view.LayoutInflater;
+
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
@@ -32,6 +32,7 @@ public class CalendarActivity extends AppCompatActivity {
     private TextView yearText;
     private TextView monthText;
     private GridView gv_cal;
+    public ViewGroup layoutBar;
     public Button close;
 
     @Override
@@ -53,6 +54,8 @@ public class CalendarActivity extends AppCompatActivity {
         yearText = (TextView) findViewById(R.id.Year);
         monthText = (TextView) findViewById(R.id.Month);
         TextView txtyr = (TextView) findViewById(R.id.textForYear);
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
 
         setAllAttr(yearText, Integer.toString(year), face, Color.BLACK);
         setAllAttr(monthText, new SimpleDateFormat("MMM").format(c.getTime()), face, Color.BLACK);
@@ -75,6 +78,7 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -97,39 +101,34 @@ public class CalendarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void backwardOnClick(View view) {
-        Calendar prevMonth = Calendar.getInstance();
+    public void switchOnClick(View view) {
+        Calendar newMonth = Calendar.getInstance();
 
-        if (month - 1 < 1) {
-            yearText.setText(Integer.toString(year - 1));
-            year -= 1;
-            month = 12;
-        } else {
-            month -= 1;
+        switch (view.getId()) {
+            case R.id.forward:
+                if (month + 1 > 12) {
+                    yearText.setText(Integer.toString(year + 1));
+                    month = 1;
+                    year += 1;
+                } else {
+                    month += 1;
+                }
+                break;
+            case R.id.backward:
+                if (month - 1 < 1) {
+                    yearText.setText(Integer.toString(year - 1));
+                    year -= 1;
+                    month = 12;
+                } else {
+                    month -= 1;
+                }
+                break;
         }
 
-        prevMonth.set(year, month - 1, 1);
-        monthText.setText(new SimpleDateFormat("MMM").format(prevMonth.getTime()));
-        weekDay = prevMonth.get(Calendar.DAY_OF_WEEK);
-        dayOfMonth = prevMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
-        gv_cal.setAdapter(new TextAdapter(this, year, month, weekDay, 0, dayOfMonth, face));
-    }
-
-    public void forwardOnClick(View view) {
-        Calendar nextMonth = Calendar.getInstance();
-
-        if (month + 1 > 12) {
-            yearText.setText(Integer.toString(year + 1));
-            month = 1;
-            year += 1;
-        } else {
-            month += 1;
-        }
-
-        nextMonth.set(year, month - 1, 1);
-        monthText.setText(new SimpleDateFormat("MMM").format(nextMonth.getTime()));
-        weekDay = nextMonth.get(Calendar.DAY_OF_WEEK);
-        dayOfMonth = nextMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
+        newMonth.set(year, month - 1, 1);
+        monthText.setText(new SimpleDateFormat("MMM").format(newMonth.getTime()));
+        weekDay = newMonth.get(Calendar.DAY_OF_WEEK);
+        dayOfMonth = newMonth.getActualMaximum(Calendar.DAY_OF_MONTH);
         gv_cal.setAdapter(new TextAdapter(this, year, month, weekDay, 0, dayOfMonth, face));
     }
 
@@ -141,8 +140,7 @@ public class CalendarActivity extends AppCompatActivity {
             popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
             close = (Button) layout.findViewById(R.id.closeBtn);
             close.setOnClickListener(cancel_button);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -157,5 +155,14 @@ public class CalendarActivity extends AppCompatActivity {
         txtview.setTextColor(color);
         txtview.setText(text);
         txtview.setTypeface(face);
+    }
+
+    private void setListener(ViewGroup view) {
+        Context con = getApplicationContext();
+        NavigationBar btnListener = new NavigationBar(this, con);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
     }
 }

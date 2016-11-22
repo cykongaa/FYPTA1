@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import java.lang.reflect.Field;
 public class SharingActivity extends AppCompatActivity {
 
     Context thisActivity = this;
+    private ViewGroup layoutBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class SharingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
     }
 
     public static int getId(String resourceName, Class<?> c) {
@@ -78,5 +83,13 @@ public class SharingActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setListener(ViewGroup view) {
+        NavigationBar btnListener = new NavigationBar(this, thisActivity);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
     }
 }
