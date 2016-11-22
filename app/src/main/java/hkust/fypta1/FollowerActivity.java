@@ -8,17 +8,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class FollowerActivity extends Activity {
 
     public ListView lv1;
-    Context thisActivity=this;
+    private ViewGroup layoutBar;
+    Context thisActivity = this;
 
 
     @Override
@@ -104,7 +105,8 @@ public class FollowerActivity extends Activity {
             }
         });
 
-
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
     }
 
     private ArrayList getListData() {
@@ -129,7 +131,7 @@ public class FollowerActivity extends Activity {
         results.add(followerData9);
         Follower followerData10 = new Follower("sea2","yakk50");
         results.add(followerData10);
-        Follower followerData11= new Follower("girl2","yeah");
+        Follower followerData11 = new Follower("girl2","yeah");
         results.add(followerData11);
 
         // Add some more dummy data for testing
@@ -157,5 +159,13 @@ public class FollowerActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setListener(ViewGroup view) {
+        NavigationBar btnListener = new NavigationBar(this, thisActivity);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
     }
 }

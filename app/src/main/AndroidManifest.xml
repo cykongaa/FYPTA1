@@ -17,19 +17,19 @@
             </intent-filter>
         </activity>
         <activity
+
             android:name=".CalendarActivity"
-            android:label="@string/title_activity_calendar"></activity>
+            android:label="@string/title_activity_calendar" />
 
         <activity
             android:name=".FollowerActivity"
-            android:label="@string/title_activity_follower"></activity>
+            android:label="@string/title_activity_follower" />
         <activity
             android:name=".ChatRoomActivity"
-            android:label="@string/title_activity_chat_room"></activity>
+            android:label="@string/title_activity_chat_room" />
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search" >
-        </activity>
+            android:label="@string/title_activity_search" />
         <activity
             android:name=".SharingActivity"
             android:label="@string/title_activity_sharing" >
@@ -37,6 +37,11 @@
         <activity
             android:name=".EventActivity"
             android:label="EventActivity" >
+        </activity>
+
+        <activity android:name=".SearchResultActivity"
+            android:label="@string/title_activity_sharing" >
+
         </activity>
 
     </application>

@@ -59,5 +59,10 @@
         android:layout_above="@+id/including"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/bottombuttonbar"
+        android:id="@+id/bottomBar"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

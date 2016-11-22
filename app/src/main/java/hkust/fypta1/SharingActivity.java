@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.AdapterView;
+
+import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,9 +25,13 @@ import java.util.ArrayList;
 public class SharingActivity extends AppCompatActivity {
 
     Context thisActivity = this;
+
     public Follower followerData = null;
     public ListView lv1;
     public ArrayList<Sharing> results = new ArrayList<>();
+
+    private ViewGroup layoutBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +142,9 @@ public class SharingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
     }
 
     private ArrayList getSpecificFollowerActivity(String followerName){
@@ -212,5 +223,13 @@ public class SharingActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setListener(ViewGroup view) {
+        NavigationBar btnListener = new NavigationBar(this, thisActivity);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
     }
 }
