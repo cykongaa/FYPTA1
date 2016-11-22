@@ -33,30 +33,21 @@ public class ConnectionClass {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        conn = null;
         try {
-
-            Class.forName(classes);
-            conn = DriverManager.getConnection(destination, userName, password);
-
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String usename = "administrator";
+            String password = "12345678";
+            String destination = "jdbc:sqlserver://10.89.121.180:1433;DatabaseName=FYPTA1;instance=SQLSERVER;encrypt=true;TrustServerCertificate=true;";
+            conn = DriverManager.getConnection(destination, usename, password);
             PreparedStatement x = conn.prepareStatement("SELECT user_name FROM [User] WHERE user_id='U000000001'");
             ResultSet xre = x.executeQuery();
             if (xre.next()) {
                 System.out.println(xre.getString("user_name"));
-                Log.d("result: ", xre.getString("user_name"));
             }
             conn.setAutoCommit(false);
 
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-            Log.e("ERROR", se.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            Log.e("ERROR", e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("ERROR", e.getMessage());
         }
         return conn;
     }
