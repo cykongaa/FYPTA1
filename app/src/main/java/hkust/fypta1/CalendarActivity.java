@@ -1,6 +1,9 @@
 package hkust.fypta1;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,70 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calendar);
+
+        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
+        eventButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),EventActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
+        calendarButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
+        searchButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
+        followerButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
+        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
+        chatButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
+           /* if you want to finish the first activity then just call
+            finish(); */
+            }
+        });
+
         //Get Current Year and Month When Creating
         Context con = getApplicationContext();
         Calendar c = Calendar.getInstance();
@@ -44,18 +112,16 @@ public class CalendarActivity extends AppCompatActivity {
         weekDay = c.get(Calendar.DAY_OF_WEEK);
         dayOfMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+
 
         //Set The Text View by current year and month
         yearText = (TextView) findViewById(R.id.Year);
         monthText = (TextView) findViewById(R.id.Month);
         TextView txtyr = (TextView) findViewById(R.id.textForYear);
-        yearText.setText(Integer.toString(year));
-        yearText.setTypeface(face);
-        monthText.setText(new SimpleDateFormat("MMM").format(c.getTime()));
-        monthText.setTypeface(face);
-        txtyr.setTypeface(face);
+
+        setAllAttr(yearText, Integer.toString(year), face, Color.BLACK);
+        setAllAttr(monthText, new SimpleDateFormat("MMM").format(c.getTime()), face, Color.BLACK);
+        setAllAttr(txtyr, "Year", face, Color.BLACK);
 
         //Binding the grid view by day images and set the theme image
         gv_cal = (GridView) findViewById(R.id.CalendarGrid);
@@ -77,7 +143,7 @@ public class CalendarActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        getMenuInflater().inflate(R.menu.toolbar_item, menu);
         return true;
     }
 
@@ -151,4 +217,10 @@ public class CalendarActivity extends AppCompatActivity {
             popup.dismiss();
         }
     };
+
+    private void setAllAttr(TextView txtview, String text, Typeface face, int color) {
+        txtview.setTextColor(color);
+        txtview.setText(text);
+        txtview.setTypeface(face);
+    }
 }

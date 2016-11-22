@@ -19,6 +19,7 @@
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar"></activity>
+
         <activity
             android:name=".FollowerActivity"
             android:label="@string/title_activity_follower"></activity>
@@ -32,6 +33,10 @@
         <activity
             android:name=".SharingActivity"
             android:label="@string/title_activity_sharing" >
+        </activity>
+        <activity
+            android:name=".EventActivity"
+            android:label="EventActivity" >
         </activity>
 
     </application>

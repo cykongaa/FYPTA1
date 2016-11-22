@@ -17,72 +17,6 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/userIcon" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="21dp"
-        android:layout_marginEnd="21dp"
-        android:id="@+id/userName"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/userIcon"
-        android:layout_toStartOf="@+id/userIcon"
-        android:layout_marginTop="13dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Flower expo"
-        android:id="@+id/EventName"
-
-        android:textStyle="bold"
-        android:layout_below="@+id/sharing1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="I went to a flower Expo this Sunday. What a relaxing time!:)"
-        android:id="@+id/sharingContent"
-        android:layout_below="@+id/EventName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-        android:id="@+id/sharing1"
-        android:scaleType="fitXY"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/userIcon"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-
-        android:id="@+id/EventName2"
-        android:textStyle="bold"
-        android:layout_below="@+id/sharing2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-
-        android:id="@+id/sharing2"
-        android:scaleType="fitXY"
-        android:layout_below="@+id/sharingContent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
 
         android:layout_width="20dp"
@@ -91,6 +25,38 @@
         android:id="@+id/backButton"
         android:background="@drawable/backarrow"
         android:layout_alignBottom="@+id/userName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:focusable="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/userIcon"
+        android:layout_toStartOf="@+id/userIcon"
+        android:layout_marginTop="11dp" />
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/bottombuttonbar"
+        android:id="@+id/including" />
+
+    <ListView
+        android:id="@+id/sharing_list"
+        android:layout_width="fill_parent"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical"
+
+        android:layout_height="320dp"
+        android:layout_above="@+id/including"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

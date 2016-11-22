@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by kongchingyiii on 7/9/16.
  */
+
 public class CustomListAdapter extends BaseAdapter {
     private ArrayList<Follower> listData;
     private LayoutInflater layoutInflater;
@@ -45,7 +46,7 @@ public class CustomListAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.iconView = (ImageView) convertView.findViewById(R.id.icon);
 
-            holder.userNameView = (TextView) convertView.findViewById(R.id.followName);
+            holder.userNameView = (TextView) convertView.findViewById(R.id.chatName);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

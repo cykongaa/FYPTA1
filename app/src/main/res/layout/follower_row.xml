@@ -6,7 +6,7 @@
     android:padding="5dip" >
 
     <TextView
-        android:id="@+id/followName"
+        android:id="@+id/chatName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -16,7 +16,6 @@
         android:layout_toEndOf="@+id/icon"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="37dp"
-        android:text="follower"
         android:focusable="false"/>
 
 

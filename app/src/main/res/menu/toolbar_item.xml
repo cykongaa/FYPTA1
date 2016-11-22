@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/eventPage"
+            android:icon="@drawable/usermainicon"
+            app:showAsAction="ifRoom"
+            android:title="Event">
+        </item>
+        <item
+            android:id="@+id/CalendarPage"
+            android:icon="@drawable/usermainicon"
+            app:showAsAction="ifRoom|withText"
+            android:title="Calendar">
+        </item>
+        <item
+            android:id="@+id/SearchPage"
+            android:icon="@drawable/usermainicon"
+            app:showAsAction="ifRoom"
+            android:title="Search">
+        </item>
+        <item
+            android:id="@+id/FollowerPage"
+            android:icon="@drawable/usermainicon"
+            app:showAsAction="ifRoom"
+            android:title="Follower">
+        </item>
+        <item
+            android:id="@+id/ChatRoomPage"
+            android:icon="@drawable/usermainicon"
+            app:showAsAction="ifRoom"
+            android:title="ChatRoom">
+        </item>
+</menu>
