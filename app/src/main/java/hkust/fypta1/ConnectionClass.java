@@ -28,7 +28,7 @@ public class ConnectionClass {
         destination = "jdbc:sqlserver://" + ip + ":1433;DatabaseName=" + databaseName +";instance=SQLSERVER;encrypt=true;TrustServerCertificate=true;";
         Log.d("destination",destination);
     }
-    @SuppressLint("NewApi")
+
     public Connection CONN() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
