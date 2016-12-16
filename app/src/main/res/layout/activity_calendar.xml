@@ -38,28 +38,6 @@
         android:layout_alignParentStart="true" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="1"
-        android:id="@+id/Month"
-        android:textSize="25dp"
-        android:layout_above="@+id/CalendarGrid"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/backward"
-        android:onClick="switchOnClick"
-        style="?android:attr/borderlessButtonStyle"
-        android:background="@mipmap/backward"
-        android:layout_above="@+id/CalendarGrid"
-        android:layout_alignLeft="@+id/Year"
-        android:layout_alignStart="@+id/Year" />
-
-
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -79,16 +57,6 @@
         android:layout_alignParentBottom="true"
         layout="@layout/bottombuttonbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="fffffff"
-        android:id="@+id/Month"
-        android:textSize="25dp"
-        android:layout_alignTop="@+id/forward"
-        android:layout_centerHorizontal="true" />
-
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -101,4 +69,14 @@
         android:layout_toStartOf="@+id/Month"
         android:layout_marginRight="27dp"
         android:layout_marginEnd="27dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="1"
+        android:id="@+id/Month"
+        android:textSize="25dp"
+        android:layout_above="@+id/CalendarGrid"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

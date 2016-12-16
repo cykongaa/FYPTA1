@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hkust.fypta1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".EventActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar" />
-
         <activity
             android:name=".FollowerActivity"
             android:label="@string/title_activity_follower" />
@@ -32,20 +32,15 @@
             android:label="@string/title_activity_search" />
         <activity
             android:name=".SharingActivity"
-            android:label="@string/title_activity_sharing" >
-        </activity>
+            android:label="@string/title_activity_sharing" />
+        <!--<activity-->
+            <!--android:name=".EventActivity"-->
+            <!--android:label="EventActivity" />-->
         <activity
-            android:name=".EventActivity"
-            android:label="EventActivity" >
-        </activity>
-
-        <activity android:name=".SearchResultActivity"
-            android:label="@string/title_activity_sharing" >
-
-        </activity>
-
+            android:name=".SearchResultActivity"
+            android:label="@string/title_activity_sharing" />
+        <activity android:name=".ChatPageActivity" />
+        <activity android:name=".EventDetailActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class FollowerActivity extends Activity {
+public class FollowerActivity extends AppCompatActivity {
 
     public ListView lv1;
     private ViewGroup layoutBar;
@@ -27,65 +27,6 @@ public class FollowerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follower);
 
-        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-        eventButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-        calendarButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-        followerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-        chatButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
 
         ArrayList follower_list = getListData();
         lv1 = (ListView) findViewById(R.id.custom_list);
@@ -138,7 +79,6 @@ public class FollowerActivity extends Activity {
         return results;
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -162,7 +102,8 @@ public class FollowerActivity extends Activity {
     }
 
     private void setListener(ViewGroup view) {
-        NavigationBar btnListener = new NavigationBar(this, thisActivity);
+        Context con = this.getApplicationContext();
+        NavigationBar btnListener = new NavigationBar(this, con);
         int count = view.getChildCount();
         for (int i = 0; i < count; i++) {
             view.getChildAt(i).setOnClickListener(btnListener);

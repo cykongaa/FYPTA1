@@ -1,94 +1,40 @@
 package hkust.fypta1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
+import java.sql.Connection;
+
 public class MainActivity extends AppCompatActivity {
-
+    Context thisActivity = this;
     private ConnectionClass connectionClass;
-
+    private ViewGroup layoutBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-        eventButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
+//        connectionClass = new ConnectionClass();
+//
+//       connectionClass.CONN();
 
-        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-        calendarButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-        followerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-        chatButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-
-
-        connectionClass = new ConnectionClass();
-
-        connectionClass.CONN();
 //        Intent intent = new Intent(this, FollowerActivity.class);
 //
 //        startActivity(intent);
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
     }
 
     @Override
@@ -112,7 +58,36 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+//
+//    class ConnectTask extends AsyncTask<String,void,ConnectionClass> {
+//
+//        protected ConnectionClass doInBackground(String k) {
+//            try {
+//
+//                connectionClass = new ConnectionClass();
+//
+//                return connectionClass;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//
+//
+//        protected void onPostExecute(ConnectionClass c) {
+//            // TODO: check this.exception
+//            // TODO: do something with the feed
+//            connectionClass.CONN();
+//        }
+//    }
 
+    private void setListener(ViewGroup view) {
+        NavigationBar btnListener = new NavigationBar(this, thisActivity);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
+    }
 
 
 

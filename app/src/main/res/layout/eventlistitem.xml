@@ -5,8 +5,8 @@
 
     <ImageView
         android:scaleType="fitXY"
-        android:layout_width="192dp"
-        android:layout_height="192dp"
+        android:layout_width = "match_parent"
+        android:layout_height= "wrap_content"
         android:id="@+id/EventImage" />
 
     <TextView
@@ -16,13 +16,5 @@
         android:layout_below="@+id/EventImage"
         android:text="New Text"
         android:id="@+id/EventText" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_below="@+id/EventText"
-        android:text="New Text"
-        android:id="@+id/EventText2" />
 
 </RelativeLayout>

@@ -49,20 +49,23 @@
         layout="@layout/bottombuttonbar"
         android:id="@+id/including" />
 
+    <!--<include-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--layout="@layout/bottombuttonbar"-->
+        <!--android:id="@+id/bottomBar"-->
+        <!--android:layout_alignParentBottom="true" />-->
+
     <ListView
         android:id="@+id/sharing_list"
         android:layout_width="fill_parent"
         android:dividerHeight="1dp"
         android:scrollbars="vertical"
 
-        android:layout_height="320dp"
-        android:layout_above="@+id/including"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="60dp"
+        android:layout_below="@+id/userIcon"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <include
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        layout="@layout/bottombuttonbar"
-        android:id="@+id/bottomBar"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
 </RelativeLayout>
