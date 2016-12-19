@@ -35,7 +35,8 @@ public class Event implements Serializable {
         this.event_address=address;
         this.event_organizer=organizer;
         this.event_description=description;
-        this.event_pic=pic;
+//        this.event_pic=pic;
+        this.event_pic="https://s29.postimg.org/g2xl6im07/defaulteventpic.png";
         this.event_time=time;
     }
 
@@ -45,12 +46,15 @@ public class Event implements Serializable {
 //    }
 
 
+    public String getEventId(){return event_id;}
 
     public String getEventName() {
         return event_name;
     }
 
     public String getEventAddress(){return event_address;}
+
+    public String getEventDate(){ return event_date;}
 
     public String getEventTime(){return event_time;}
 

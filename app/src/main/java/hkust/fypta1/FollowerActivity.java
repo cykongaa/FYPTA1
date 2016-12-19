@@ -3,6 +3,10 @@ package hkust.fypta1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +30,11 @@ public class FollowerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follower);
+
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
+        setTitle("My Friends");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setIcon(drawable);
 
 
         ArrayList follower_list = getListData();

@@ -3,6 +3,8 @@ package hkust.fypta1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
@@ -16,14 +18,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
-import java.lang.reflect.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class EventActivity extends AppCompatActivity  {
 
@@ -41,14 +38,16 @@ public class EventActivity extends AppCompatActivity  {
 
         evntList = (ListView) findViewById(R.id.listView);
 
-        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
+
 //        ActionMenuView toolbar = (ActionMenuView) findViewById(R.menu.toolbar_item);
 
 //        toolbar.setOverflowIcon(drawable);
 
         new ConnectTask().execute("SELECT event_id,event_name,event_date,event_address,event_organizer,event_description,event_pic,event_time FROM [Event] ");
 
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("ToGather");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
         getSupportActionBar().setIcon(drawable);
 
 
@@ -197,9 +196,6 @@ public class EventActivity extends AppCompatActivity  {
         protected void onPostExecute(ArrayList<Event> event_list2) {
             // TODO: check this.exception
             // TODO: do something with the feed
-
-
-
 
             evntList.setAdapter( new EventListAdapter(EventActivity.this, eventList));
             evntList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

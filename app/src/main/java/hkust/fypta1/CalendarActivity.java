@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -43,65 +46,10 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-        eventButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-        calendarButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-        followerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-        chatButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
+        setTitle("My Calendar");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setIcon(drawable);
 
         //Get Current Year and Month When Creating
         Context con = getApplicationContext();

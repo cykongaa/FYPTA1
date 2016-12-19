@@ -1,20 +1,30 @@
 package hkust.fypta1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class EventDetailActivity extends AppCompatActivity {
 
     public Event eventData;
+
+//    private ViewGroup layoutBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +49,69 @@ public class EventDetailActivity extends AppCompatActivity {
         TextView eventDescription = (TextView) findViewById(R.id.event_description);
         eventDescription.setText(eventData.getEventDescription());
 
+//        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+//        setListener(layoutBar);
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
+        setTitle("Event details");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setIcon(drawable);
 
         String picString=eventData.getEventPic();
-        URL url=null;
-        if (picString.length()!=0){
-            try {
-                url=new URL(picString);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }else{
-            try {
-                url =new URL("https://www.google.com.hk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwi23pX36_fQAhVCKpQKHUzbA9EQjRwIBw&url=http%3A%2F%2Fwww.jsgtlr.com%2F601509033fc68851-event-icon.html&psig=AFQjCNF0eoDI0mOy6s4Q0KRb1_z6vMpO7Q&ust=1481947804213136");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
 
-        Bitmap bmp = null;
+        Bitmap bmp= null;
         try {
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        } catch (IOException e) {
+            bmp = new RetrievePicTask().execute(picString).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
-//        imageView.setImageBitmap(bmp);
-//        holder.imgView.setImageBitmap(bmp);
+
         ImageView eventPic = (ImageView) findViewById(R.id.eventpic);
         eventPic.setImageBitmap(bmp);
 
 
+    }
+
+    private void setListener(ViewGroup view) {
+        Context con = this.getApplicationContext();
+        NavigationBar btnListener = new NavigationBar(this, con);
+        int count = view.getChildCount();
+        for (int i = 0; i < count; i++) {
+            view.getChildAt(i).setOnClickListener(btnListener);
+        }
+    }
+
+    class RetrievePicTask extends AsyncTask<String, Void, Bitmap> {
+
+        private Exception exception;
+
+        protected Bitmap doInBackground(String... urls) {
+            try {
+
+
+                URL url = new URL(urls[0]);
+                Bitmap bmp = null;
+                try {
+                    bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return bmp;
+            } catch (Exception e) {
+                this.exception = e;
+
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bmp) {
+            // TODO: check this.exception
+            // TODO: do something with the feed
+
+//            return bmp;
+        }
     }
 }

@@ -2,6 +2,10 @@ package hkust.fypta1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,74 +15,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SearchActivity extends AppCompatActivity {
+
+    private ViewGroup layoutBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-//        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-//        eventButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-//           /* if you want to finish the first activity then just call
-//            finish(); */
-//            }
-//        });
-//
-//        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-//        calendarButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-//           /* if you want to finish the first activity then just call
-//            finish(); */
-//            }
-//        });
-//
-//        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-//        searchButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-//           /* if you want to finish the first activity then just call
-//            finish(); */
-//            }
-//        });
-//
-//        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-//        followerButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-//           /* if you want to finish the first activity then just call
-//            finish(); */
-//            }
-//        });
-//
-//        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-//        chatButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-//           /* if you want to finish the first activity then just call
-//            finish(); */
-//            }
-//        });
+
+        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
+        setListener(layoutBar);
+
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
+        setTitle("Search");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setIcon(drawable);
     }
 
     @Override
@@ -103,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void searchEvt() {
+    public void searchEvt(View view) {
         String searchtxt = ((TextView) findViewById(R.id.Criteria)).getText().toString();
         Intent toSearch = new Intent(this, SearchResultActivity.class);
         if (!searchtxt.trim().equals("")) {
@@ -111,7 +67,10 @@ public class SearchActivity extends AppCompatActivity {
             startActivity(toSearch);
         }
         else {
-
+            Toast t = new Toast(this.getApplication().getApplicationContext());
+            t.setDuration(Toast.LENGTH_LONG);
+            t.setText("Please enter your search keyword!");
+            t.show();
         }
     }
 

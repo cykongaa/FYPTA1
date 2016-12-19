@@ -87,27 +87,6 @@ public class EventListAdapter extends BaseAdapter {
         }
 
         String picString=events.get(position).getEventPic();
-        URL url=null;
-//        if (picString.length()!=0){
-//            try {
-//                url=new URL(picString);
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-//        }else{
-//            try {
-//                url =new URL("https://www.google.com.hk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwi23pX36_fQAhVCKpQKHUzbA9EQjRwIBw&url=http%3A%2F%2Fwww.jsgtlr.com%2F601509033fc68851-event-icon.html&psig=AFQjCNF0eoDI0mOy6s4Q0KRb1_z6vMpO7Q&ust=1481947804213136");
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
-//        Bitmap bmp = null;
-//        try {
-//            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
         Bitmap bmp= null;
         try {
@@ -139,9 +118,6 @@ public class EventListAdapter extends BaseAdapter {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//        imageView.setImageBitmap(bmp);
-//                holder.imgView.setImageBitmap(bmp);
-//                holder.evtTxt.setText(events.get(position).getEventName());
 
                 return bmp;
             } catch (Exception e) {
