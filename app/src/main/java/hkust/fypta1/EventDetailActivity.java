@@ -35,25 +35,44 @@ public class EventDetailActivity extends AppCompatActivity {
         eventData = (Event) intent.getExtras().getSerializable("event");
 
         TextView eventName = (TextView) findViewById(R.id.EventName);
-        eventName.setText(eventData.getEventName());
+        if(!eventData.getEventName().equals("")) {
+            eventName.setText(eventData.getEventName());
+        }else{
+            eventName.setText("Event");
+        }
 
         TextView eventTime = (TextView) findViewById(R.id.event_time);
-        eventTime.setText(eventData.getEventTime());
+        if(!eventData.getEventTime().equals("")) {
+            eventTime.setText(eventData.getEventTime());
+        }else{
+            eventTime.setText("Not Specified");
+        }
 
         TextView eventOrganizer = (TextView) findViewById(R.id.event_organizer);
-        eventOrganizer.setText(eventData.getEventOrganizer());
+        if(!eventData.getEventOrganizer().equals("")) {
+            eventOrganizer.setText(eventData.getEventOrganizer());
+        }else{
+            eventOrganizer.setText("Not Specified");
+        }
 
         TextView eventAddress = (TextView) findViewById(R.id.event_address);
-        eventAddress.setText(eventData.getEventAddress());
+        if(!eventData.getEventAddress().equals("")) {
+            eventAddress.setText(eventData.getEventAddress());
+        }else{
+            eventAddress.setText("Not Specified");
+        }
 
         TextView eventDescription = (TextView) findViewById(R.id.event_description);
-        eventDescription.setText(eventData.getEventDescription());
-
+        if(!eventData.getEventDescription().equals("")) {
+            eventDescription.setText(eventData.getEventDescription());
+        }else{
+            eventDescription.setText("Not Specified");
+        }
 //        layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
 //        setListener(layoutBar);
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("Event details");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
         getSupportActionBar().setIcon(drawable);
 
         String picString=eventData.getEventPic();

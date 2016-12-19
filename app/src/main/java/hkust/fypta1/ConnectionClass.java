@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ConnectionClass {
 
     private Connection conn;
-    private String ip = "10.89.121.180"; //ip address of server
+    private String ip = "192.168.1.8"; //ip address of server
     private String classes = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private String databaseName = "FYPTA1";
     private String destination = null;
@@ -41,7 +41,7 @@ public class ConnectionClass {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             String usename = "administrator";
             String password = "12345678";
-            String destination = "jdbc:jtds:sqlserver://10.89.121.180:1433/FYPTA1;instance=FYPTA1;";
+            String destination = "jdbc:jtds:sqlserver://192.168.1.8:1433/FYPTA1;instance=FYPTA1;";
 
             conn = DriverManager.getConnection(destination, usename, password);
 //            conn.executeSQL("SELECT user_name FROM [User] WHERE user_id='U000000001'");

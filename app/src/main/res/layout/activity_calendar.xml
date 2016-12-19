@@ -39,8 +39,8 @@
 
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/forward"
         style="?android:attr/borderlessButtonStyle"
         android:layout_marginLeft="37dp"
@@ -58,10 +58,10 @@
         layout="@layout/bottombuttonbar" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/backward"
-        android:onClick="backwardOnClick"
+        android:onClick="switchOnClick"
         style="?android:attr/borderlessButtonStyle"
         android:background="@mipmap/backward"
         android:layout_below="@+id/Year"

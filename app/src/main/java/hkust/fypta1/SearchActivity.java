@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("Search");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
         getSupportActionBar().setIcon(drawable);
     }
 

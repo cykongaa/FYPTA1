@@ -13,7 +13,7 @@
         android:layout_width="30dp"
         android:layout_height="60dp"
         android:scaleType="fitXY"
-        android:layout_weight="0.98"
+        android:layout_weight="1.00"
         android:src="@mipmap/event_icon"
         style="?android:attr/borderlessButtonStyle"
         />
@@ -21,9 +21,9 @@
     <ImageButton
         android:id="@+id/Calendar"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:scaleType="fitXY"
-        android:layout_weight="0.99"
+        android:layout_weight="1.00"
         android:src="@mipmap/calendar_icon"
         style="?android:attr/borderlessButtonStyle"
         />
@@ -31,7 +31,7 @@
     <ImageButton
         android:id="@+id/Search"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
         android:src="@mipmap/search_icon"
@@ -41,7 +41,7 @@
     <ImageButton
         android:id="@+id/Follower"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
         android:src="@mipmap/heart"
@@ -51,7 +51,7 @@
     <ImageButton
         android:id="@+id/chatRoom"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
         android:src="@mipmap/chat_icon"

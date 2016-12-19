@@ -32,7 +32,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("Search Results");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#AED6F1")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
         getSupportActionBar().setIcon(drawable);
 
         new ConnectTask().execute("SELECT event_id,event_name,event_date,event_address,event_organizer,event_description,event_pic,event_time FROM [Event] WHERE event_name LIKE '%" + searchkeyword +"%'");
