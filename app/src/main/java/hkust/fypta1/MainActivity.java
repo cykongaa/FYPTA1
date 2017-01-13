@@ -1,6 +1,10 @@
 package hkust.fypta1;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,81 +18,49 @@ import android.widget.ProgressBar;
 public class MainActivity extends AppCompatActivity {
 
     private ConnectionClass connectionClass;
-
+    private Context thisActivity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-        eventButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-        calendarButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-        followerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-        chatButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-
-
         connectionClass = new ConnectionClass();
 
-        connectionClass.CONN();
+        //connectionClass.CONN();
 //        Intent intent = new Intent(this, FollowerActivity.class);
 //
 //        startActivity(intent);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.eventPage:
+                                Intent intent = new Intent(thisActivity, MainActivity.class);
+                                thisActivity.startActivity(intent);
+                                break;
+                            case R.id.CalendarPage:
+                                Intent intent2 = new Intent(thisActivity, CalendarActivity.class);
+                                thisActivity.startActivity(intent2);
+                                break;
+                            case R.id.SearchPage:
+                                Intent intent3 = new Intent(thisActivity, SearchActivity.class);
+                                thisActivity.startActivity(intent3);
+                                break;
+                            case R.id.FollowerPage:
+                                Intent intent4 = new Intent(thisActivity, FollowerActivity.class);
+                                thisActivity.startActivity(intent4);
+                                break;
+                            case R.id.ChatRoomPage:
+                                break;
+                        }
+                        return false;
+                    }
+                });
     }
 
     @Override
@@ -112,8 +84,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
 }

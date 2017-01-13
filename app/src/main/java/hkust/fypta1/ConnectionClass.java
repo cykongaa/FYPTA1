@@ -25,7 +25,7 @@ public class ConnectionClass {
     private String password = "12345678"; // 12345678
 
     public ConnectionClass(){
-        destination = "jdbc:sqlserver://" + ip + ":1433;DatabaseName=" + databaseName +";instance=SQLSERVER;encrypt=true;TrustServerCertificate=true;";
+        destination = "jdbc:sqlserver://" + ip + ":1433;DatabaseName=" + databaseName +";instance=SQLSERVER;integratedSecurity=true;encrypt=true;TrustServerCertificate=true;";
         Log.d("destination",destination);
     }
 

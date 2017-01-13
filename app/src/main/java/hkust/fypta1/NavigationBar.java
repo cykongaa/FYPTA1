@@ -25,6 +25,8 @@ public class NavigationBar implements View.OnClickListener {
                 act.startActivity(intent2);
                 break;
             case R.id.Search:
+                Intent intent3 = new Intent(con, SearchActivity.class);
+                con.startActivity(intent3);
                 break;
             case R.id.Follower:
                 Intent intent4 = new Intent(con, FollowerActivity.class);

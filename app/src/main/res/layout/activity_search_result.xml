@@ -10,4 +10,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hkust.fypta1.SearchResultActivity">
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_list"/>
+
+    <include
+        android:layout_width="fill_parent"
+        android:id="@+id/bottomBar"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_list"
+        android:layout_alignParentBottom="true"
+        layout="@layout/bottombuttonbar" />
 </RelativeLayout>

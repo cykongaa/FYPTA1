@@ -4,9 +4,8 @@ apply plugin: 'com.android.application'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.0'
     compile project(':sqljdbc42')
-
-
 }
 android {
     compileSdkVersion 23

@@ -34,74 +34,16 @@ public class CalendarActivity extends AppCompatActivity {
     private TextView yearText;
     private TextView monthText;
     private GridView gv_cal;
-    public ViewGroup layoutBar;
     public Button close;
+    Context thisActivity = this;
+    private ViewGroup layoutBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
-        ImageButton eventButton=(ImageButton)findViewById(R.id.Event);
-        eventButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),EventActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton calendarButton=(ImageButton)findViewById(R.id.Calendar);
-        calendarButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),CalendarActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton searchButton=(ImageButton)findViewById(R.id.Search);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),SearchActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton followerButton=(ImageButton)findViewById(R.id.Follower);
-        followerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),FollowerActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
-
-        ImageButton chatButton=(ImageButton)findViewById(R.id.chatRoom);
-        chatButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(getApplicationContext(),ChatRoomActivity.class));
-           /* if you want to finish the first activity then just call
-            finish(); */
-            }
-        });
 
         //Get Current Year and Month When Creating
         Context con = getApplicationContext();
@@ -112,8 +54,6 @@ public class CalendarActivity extends AppCompatActivity {
         face = Typeface.createFromAsset(con.getAssets(), "fonts/KaushanScript-Regular.ttf");
         weekDay = c.get(Calendar.DAY_OF_WEEK);
         dayOfMonth = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-
 
         //Set The Text View by current year and month
         yearText = (TextView) findViewById(R.id.Year);
@@ -224,10 +164,11 @@ public class CalendarActivity extends AppCompatActivity {
 
     private void setListener(ViewGroup view) {
         Context con = getApplicationContext();
-        NavigationBar btnListener = new NavigationBar(this, con);
+        NavigationBar btnListener = new NavigationBar(this, thisActivity);
         int count = view.getChildCount();
         for (int i = 0; i < count; i++) {
             view.getChildAt(i).setOnClickListener(btnListener);
         }
     }
+
 }

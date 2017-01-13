@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="hkust.fypta1.SearchActivity">
 
     <LinearLayout
@@ -139,12 +140,15 @@
             android:layout_height="wrap_content">
         </GridView>
 
-        <include
-            layout="@layout/bottombuttonbar"
-            android:layout_width="fill_parent"
-            android:id="@+id/bottomBar"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/recommend"
-            android:layout_alignParentBottom="true">
-        </include>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:isScrollContainer="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/toolbar_color"
+        app:itemIconTint="@color/toolbar_letter"
+        app:itemTextColor="@color/toolbar_letter"
+        app:menu="@menu/toolbar_item" />
+
 </RelativeLayout>
