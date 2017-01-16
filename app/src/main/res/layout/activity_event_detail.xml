@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true">
@@ -39,8 +40,8 @@
 
         <ImageView
             android:scaleType="fitXY"
-            android:layout_width = "400dp"
-            android:layout_height= "250dp"
+            android:layout_width = "200dp"
+            android:layout_height= "200dp"
             android:id="@+id/eventpic"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -52,10 +53,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/EventAddress"
             android:textColor="@android:color/black"
-            android:layout_below="@+id/EventTime"
+            android:layout_below="@+id/event_time"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+          />
 
         <TextView
             android:text="Not specified"
@@ -116,5 +117,30 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/EventDescription"
      />
+
+        <Button
+            android:text="Get Direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/directionButton"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/EventName"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:text="Add to Calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addCalendarButton"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="39dp"
+            android:layout_marginEnd="39dp" />
+
+
     </RelativeLayout>
 </ScrollView>

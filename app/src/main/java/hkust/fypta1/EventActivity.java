@@ -39,17 +39,12 @@ public class EventActivity extends AppCompatActivity  {
         evntList = (ListView) findViewById(R.id.listView);
 
 
-//        ActionMenuView toolbar = (ActionMenuView) findViewById(R.menu.toolbar_item);
-
-//        toolbar.setOverflowIcon(drawable);
-
         new ConnectTask().execute("SELECT event_id,event_name,event_date,event_address,event_organizer,event_description,event_pic,event_time FROM [Event] ");
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("ToGather");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
         getSupportActionBar().setIcon(drawable);
-
 
 
 

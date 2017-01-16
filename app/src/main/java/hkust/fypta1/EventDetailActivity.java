@@ -7,13 +7,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -72,7 +75,7 @@ public class EventDetailActivity extends AppCompatActivity {
 //        setListener(layoutBar);
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("Event details");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
         getSupportActionBar().setIcon(drawable);
 
         String picString=eventData.getEventPic();
@@ -88,6 +91,23 @@ public class EventDetailActivity extends AppCompatActivity {
 
         ImageView eventPic = (ImageView) findViewById(R.id.eventpic);
         eventPic.setImageBitmap(bmp);
+
+        Button directionButton = (Button) findViewById(R.id.directionButton);
+        directionButton.setOnClickListener(e->{// Create a Uri from an intent string. Use the result to create an Intent.
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q="+ eventAddress);
+
+            // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            // Make the Intent explicit by setting the Google Maps package
+                        mapIntent.setPackage("com.google.android.apps.maps");
+
+            // Attempt to start an activity that can handle the Intent
+                        startActivity(mapIntent);});
+
+        Button addToCalendarButton = (Button) findViewById(R.id.addCalendarButton);
+        addToCalendarButton.setOnClickListener(e->{
+
+        });
 
 
     }
@@ -129,6 +149,47 @@ public class EventDetailActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap bmp) {
             // TODO: check this.exception
             // TODO: do something with the feed
+
+//            return bmp;
+        }
+    }
+
+    class AddCalendarTask extends AsyncTask<String, Void, Boolean> {
+
+        private Exception exception;
+
+
+        protected Boolean doInBackground(String... urls) {
+            try {
+
+                ConnectionClass connectionClass = new ConnectionClass();
+                connectionClass.CONN();
+
+                connectionClass.updateSQL(urls[0]);
+
+
+            } catch (Exception e) {
+                this.exception = e;
+
+                return false;
+            }
+
+            return true;
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            // TODO: check this.exception
+            // TODO: do something with the feed
+
+            if(success){
+                Toast.makeText(EventDetailActivity.this, "Successfully added to your calendar.",
+                        Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(EventDetailActivity.this, "Failed to add this event to your calendar, Please try again later." ,
+                        Toast.LENGTH_SHORT).show();
+            }
 
 //            return bmp;
         }

@@ -11,50 +11,49 @@
         android:id="@+id/Event"
 
         android:layout_width="30dp"
-        android:layout_height="60dp"
         android:scaleType="fitXY"
-        android:layout_weight="1.00"
-        android:src="@mipmap/event_icon"
+        android:layout_weight="0.99"
+        android:src="@mipmap/homepage"
         style="?android:attr/borderlessButtonStyle"
-        />
+        android:layout_height="65dp" />
 
     <ImageButton
         android:id="@+id/Calendar"
         android:layout_width="30dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:scaleType="fitXY"
-        android:layout_weight="1.00"
-        android:src="@mipmap/calendar_icon"
+        android:layout_weight="0.99"
+        android:src="@mipmap/calendar"
         style="?android:attr/borderlessButtonStyle"
         />
 
     <ImageButton
         android:id="@+id/Search"
         android:layout_width="30dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
-        android:src="@mipmap/search_icon"
+        android:src="@mipmap/search"
         style="?android:attr/borderlessButtonStyle"
         />
 
     <ImageButton
         android:id="@+id/Follower"
         android:layout_width="30dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
-        android:src="@mipmap/heart"
+        android:src="@mipmap/follower"
         style="?android:attr/borderlessButtonStyle"
         />
 
     <ImageButton
         android:id="@+id/chatRoom"
         android:layout_width="30dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:scaleType="fitXY"
         android:layout_weight="1.00"
-        android:src="@mipmap/chat_icon"
+        android:src="@mipmap/chatroom"
         style="?android:attr/borderlessButtonStyle"
         />
 </LinearLayout>

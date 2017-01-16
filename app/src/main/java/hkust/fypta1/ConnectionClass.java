@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ConnectionClass {
 
     private Connection conn;
-    private String ip = "192.168.1.8"; //ip address of server
+    private String ip = "172.17.129.149"; //ip address of server
     private String classes = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private String databaseName = "FYPTA1";
     private String destination = null;
@@ -41,7 +41,7 @@ public class ConnectionClass {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             String usename = "administrator";
             String password = "12345678";
-            String destination = "jdbc:jtds:sqlserver://192.168.1.8:1433/FYPTA1;instance=FYPTA1;";
+            String destination = "jdbc:jtds:sqlserver://10.89.121.180:1433/FYPTA1;instance=FYPTA1;";
 
             conn = DriverManager.getConnection(destination, usename, password);
 //            conn.executeSQL("SELECT user_name FROM [User] WHERE user_id='U000000001'");
@@ -78,7 +78,7 @@ public class ConnectionClass {
 
             while(result.next()) {
                 Log.d("result id",result.getString("event_id"));
-                eventList.add(new Event(result.getString("event_id"),result.getString("event_name"), result.getString("event_time"),result.getString("event_organizer"),result.getString("event_address"),result.getString("event_description"),result.getString("event_pic"),result.getString("event_time")));
+                eventList.add(new Event(result.getString("event_id"),result.getString("event_name"), result.getString("event_time"),result.getString("event_address"),result.getString("event_organizer"),result.getString("event_description"),result.getString("event_pic"),result.getString("event_time")));
             }
             return eventList;
         } catch (SQLException e) {

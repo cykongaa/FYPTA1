@@ -33,7 +33,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.usermainicon);
         setTitle("Chat Room");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4B0082")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
         getSupportActionBar().setIcon(drawable);
 
         layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
