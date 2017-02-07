@@ -35,7 +35,7 @@ public class Event implements Serializable {
         this.event_address=address;
         this.event_organizer=organizer;
         this.event_description=description;
-        this.event_pic="http://www.discoverhongkong.com"+pic;
+        this.event_pic=pic;
 //        this.event_pic="https://s29.postimg.org/g2xl6im07/defaulteventpic.png";
         this.event_time=time;
     }

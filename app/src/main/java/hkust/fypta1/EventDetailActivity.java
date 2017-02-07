@@ -94,7 +94,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
         Button directionButton = (Button) findViewById(R.id.directionButton);
         directionButton.setOnClickListener(e->{// Create a Uri from an intent string. Use the result to create an Intent.
-            Uri gmmIntentUri = Uri.parse("geo:0,0?q="+ eventAddress);
+            Uri gmmIntentUri = Uri.parse("http://maps.google.co.in/maps?q="+ eventData.getEventAddress());
 
             // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
                         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -106,6 +106,8 @@ public class EventDetailActivity extends AppCompatActivity {
 
         Button addToCalendarButton = (Button) findViewById(R.id.addCalendarButton);
         addToCalendarButton.setOnClickListener(e->{
+
+            new AddCalendarTask().execute("INSERT INTO [Participant] VALUES ('U000000001',0,'" + eventData.getEventId() +"')");
 
         });
 
@@ -166,7 +168,7 @@ public class EventDetailActivity extends AppCompatActivity {
                 connectionClass.CONN();
 
                 connectionClass.updateSQL(urls[0]);
-
+                return true;
 
             } catch (Exception e) {
                 this.exception = e;
@@ -174,7 +176,6 @@ public class EventDetailActivity extends AppCompatActivity {
                 return false;
             }
 
-            return true;
 
         }
 

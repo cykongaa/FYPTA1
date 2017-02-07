@@ -41,7 +41,7 @@ public class ConnectionClass {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             String usename = "administrator";
             String password = "12345678";
-            String destination = "jdbc:jtds:sqlserver://10.89.121.180:1433/FYPTA1;instance=FYPTA1;";
+            String destination = "jdbc:jtds:sqlserver://"+ip+":1433/FYPTA1;instance=FYPTA1;";
 
             conn = DriverManager.getConnection(destination, usename, password);
 //            conn.executeSQL("SELECT user_name FROM [User] WHERE user_id='U000000001'");
@@ -105,6 +105,7 @@ public class ConnectionClass {
         try {
             x = conn.prepareStatement(ex);
             x.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {

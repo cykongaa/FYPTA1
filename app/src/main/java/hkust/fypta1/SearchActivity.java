@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,19 @@ public class SearchActivity extends AppCompatActivity {
         setTitle("Search");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
         getSupportActionBar().setIcon(drawable);
+
+        Button locationButton = (Button) findViewById(R.id.locationButton);
+        locationButton.setOnClickListener(e->{
+            GPSTracker gps = gps = new GPSTracker(SearchActivity.this);
+            if(gps.canGetLocation()) {
+                Double latitude = gps.getLatitude(); // returns latitude
+                Double longitude = gps.getLongitude(); // returns longitude
+
+                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            }else{
+                gps.showSettingsAlert();
+            }
+        });
     }
 
     @Override

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hkust.fypta1">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -38,7 +39,7 @@
             <!--android:label="EventActivity" />-->
         <activity
             android:name=".SearchResultActivity"
-            android:label="@string/title_activity_sharing" />
+            android:label="SearchResultActivity" />
         <activity android:name=".ChatPageActivity" />
         <activity android:name=".EventDetailActivity"></activity>
     </application>

@@ -169,12 +169,6 @@ public class EventActivity extends AppCompatActivity  {
                 Log.d("Finish executing query","hi");
 
 
-//                    while(result.next()) {
-////                    Log.d();
-//                        Log.d("result id",result.getString("event_id"));
-//                        eventList.add(new Event(result.getString("event_id"),result.getString("event_name"), result.getString("event_time"),result.getString("event_organizer"),result.getString("event_address"),result.getString("event_description"),result.getString("event_pic"),result.getString("event_time")));
-//                    }
-
                 return eventList;
 
             } catch (Exception e) {
