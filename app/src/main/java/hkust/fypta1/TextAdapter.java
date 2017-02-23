@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.graphics.Typeface;
 
@@ -23,7 +24,7 @@ public class TextAdapter extends BaseAdapter
     private int imgsetting;
     private int dayOfMonth;
     private Typeface typef;
-    private Integer [] imgResource = {R.mipmap.cat};
+    private Integer [] imgResource = {R.mipmap.cat2};
 
     public TextAdapter (Context c, int year, int month, int weekDay, int setting, int dayofmon, Typeface face) {
         imgContent = c;
@@ -61,11 +62,13 @@ public class TextAdapter extends BaseAdapter
             e.printStackTrace();
         }
 
+        textview.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 150));
         textview.setGravity(Gravity.LEFT & Gravity.TOP);
         textview.setTextColor(Color.BLACK);
         //textview.setLayoutParams(new GridView.LayoutParams(96, 96));
         if (index + 1 >= WeekDay && index < dayOfMonth + WeekDay - 1) {
             textview.setBackgroundResource(imgResource[imgsetting]);
+//            textview.setHeight(10);
             textview.setText(Integer.toString(index + 2 - WeekDay));
         } else {
             textview.setBackgroundResource(0);

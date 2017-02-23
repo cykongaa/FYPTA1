@@ -1,7 +1,13 @@
 package hkust.fypta1;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kongchingyiii on 7/9/16.
@@ -65,6 +71,34 @@ public class Event implements Serializable {
     }
 
     public String getEventPic(){ return event_pic; }
+
+    public static Event parseFromJSON(JSONObject jsonObject) throws JSONException {
+
+        String event_name=jsonObject.getString("eventName");
+
+        String event_address=jsonObject.getString("eventLocation");
+
+        String event_date=jsonObject.getString("eventDate");
+
+        String event_id=jsonObject.getString("eventId");
+
+        String event_time=jsonObject.getString("eventTime");
+
+        String event_category=jsonObject.getString("eventCategory");
+
+        String event_organizer=jsonObject.getString("eventOrganizer");
+
+        String event_description=jsonObject.getString("eventDescript");
+
+        String event_pic=jsonObject.getString("eventPic");
+
+
+
+        return new Event(event_id,event_name, event_date, event_address, event_organizer, event_description, event_pic,event_time);
+
+
+    }
+
 
 
 }

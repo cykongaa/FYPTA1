@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class EventActivity extends AppCompatActivity  {
 
-
     private ArrayList<Event> eventList;
     public ListView evntList;
     private ViewGroup layoutBar;
@@ -35,9 +34,7 @@ public class EventActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-
         evntList = (ListView) findViewById(R.id.listView);
-
 
         new ConnectTask().execute("SELECT event_id,event_name,event_date,event_address,event_organizer,event_description,event_pic,event_time FROM [Event] ");
 
@@ -46,11 +43,8 @@ public class EventActivity extends AppCompatActivity  {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EF5350")));
         getSupportActionBar().setIcon(drawable);
 
-
-
         layoutBar = (ViewGroup) findViewById(R.id.bottomBar);
         setListener(layoutBar);
-
     }
 
 //    private ArrayList  getListData() {
@@ -163,7 +157,7 @@ public class EventActivity extends AppCompatActivity  {
             try {
 
                 ConnectionClass connectionClass = new ConnectionClass();
-                connectionClass.CONN();
+                connectionClass.CONN(EventActivity.this.getApplicationContext());
 
                 eventList = connectionClass.executeSQL(k[0]);
                 Log.d("Finish executing query","hi");

@@ -60,7 +60,10 @@ public class EventListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return events.size();
+        if(events!=null){
+        return events.size();}
+        else
+            return 0;
     }
 
     @Override

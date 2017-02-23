@@ -165,7 +165,7 @@ public class EventDetailActivity extends AppCompatActivity {
             try {
 
                 ConnectionClass connectionClass = new ConnectionClass();
-                connectionClass.CONN();
+                connectionClass.CONN(EventDetailActivity.this.getApplicationContext());
 
                 connectionClass.updateSQL(urls[0]);
                 return true;

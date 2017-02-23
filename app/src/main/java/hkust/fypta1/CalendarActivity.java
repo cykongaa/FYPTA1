@@ -149,8 +149,11 @@ public class CalendarActivity extends AppCompatActivity {
         try {
             LayoutInflater inflater = (LayoutInflater) CalendarActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View layout = inflater.inflate(R.layout.popup_calendar_detail, (ViewGroup) findViewById(R.id.popupCalendar));
-            popup = new PopupWindow(layout, 1300, 1500, true);
+//            TextView weekday = (TextView) findViewById(R.id.weekdayTV);
+//            weekday.setText(weekDay);
+            popup = new PopupWindow(layout, 1000, 1200, true);
             popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
             close = (Button) layout.findViewById(R.id.closeBtn);
             close.setOnClickListener(cancel_button);
         } catch (Exception e) {

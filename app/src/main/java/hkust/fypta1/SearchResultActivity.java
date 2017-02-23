@@ -45,7 +45,7 @@ public class SearchResultActivity extends AppCompatActivity {
             try {
 
                 ConnectionClass connectionClass = new ConnectionClass();
-                connectionClass.CONN();
+                connectionClass.CONN(SearchResultActivity.this.getApplicationContext());
 
                 eventData = connectionClass.executeSQL(k[0]);
                 Log.d("Finish executing query","hi");

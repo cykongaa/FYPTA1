@@ -1,0 +1,165 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hkust.fypta1.SearchFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/Criteria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/searchbtn"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1.05" />
+
+            <ImageButton
+                android:id="@+id/searchbtn"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+
+                android:layout_alignBaseline="@+id/Criteria"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="37dp"
+                android:layout_marginRight="37dp"
+                android:layout_weight="0.05"
+                android:background="@mipmap/search_icon"
+                android:onClick="searchEvt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firstCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1.1"
+            android:layout_below="@+id/search_bar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/music"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/search_bar"
+                android:text="Music"
+                android:layout_weight="0.3"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:id="@+id/exhibition"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search_bar"
+                android:layout_centerHorizontal="true"
+                android:text="Exhibition"
+                android:layout_weight="0.3"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:id="@+id/festival"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/search_bar"
+                android:text="Festival"
+                android:layout_weight="0.25"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:id="@+id/food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/search_bar"
+                android:text="Food"
+                android:layout_weight="0.25"
+                android:background="@android:color/background_light" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondCat"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/firstCat"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+         >
+
+            <Button
+                android:text="Sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sports"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:text="Art"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/art"
+                android:layout_weight="1.75"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:text="Lifestyle"
+                android:layout_width="93dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/lifestyle"
+                android:background="@android:color/background_light" />
+
+            <Button
+                android:text="Others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/others"
+                android:background="@android:color/background_light" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_mylocation"
+                />
+
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/secondCat"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp">
+
+        </GridLayout>
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>
