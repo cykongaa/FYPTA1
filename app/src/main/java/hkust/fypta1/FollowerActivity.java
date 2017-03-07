@@ -61,28 +61,28 @@ public class FollowerActivity extends AppCompatActivity {
 
     private ArrayList getListData() {
         ArrayList<Follower> results = new ArrayList<Follower>();
-        Follower followerData = new Follower("cat1","kate_100");
-        results.add(followerData);
-        Follower followerData2 = new Follower("dog1","bpp1220");
-        results.add(followerData2);
-        Follower followerData3 = new Follower("flower1","haha005");
-        results.add(followerData3);
-        Follower followerData4 = new Follower("flower2","ktk1222");
-        results.add(followerData4);
-        Follower followerData5 = new Follower("girl1","kelvin2");
-        results.add(followerData5);
-        Follower followerData6 = new Follower("sea1","aaa1220");
-        results.add(followerData6);
-        Follower followerData7 = new Follower("orange","yuyur05");
-        results.add(followerData7);
-        Follower followerData8 = new Follower("apple1","pann22");
-        results.add(followerData8);
-        Follower followerData9= new Follower("banana","katy9000");
-        results.add(followerData9);
-        Follower followerData10 = new Follower("sea2","yakk50");
-        results.add(followerData10);
-        Follower followerData11 = new Follower("girl2","yeah");
-        results.add(followerData11);
+//        Follower followerData = new Follower("cat1","kate_100");
+//        results.add(followerData);
+//        Follower followerData2 = new Follower("dog1","bpp1220");
+//        results.add(followerData2);
+//        Follower followerData3 = new Follower("flower1","haha005");
+//        results.add(followerData3);
+//        Follower followerData4 = new Follower("flower2","ktk1222");
+//        results.add(followerData4);
+//        Follower followerData5 = new Follower("girl1","kelvin2");
+//        results.add(followerData5);
+//        Follower followerData6 = new Follower("sea1","aaa1220");
+//        results.add(followerData6);
+//        Follower followerData7 = new Follower("orange","yuyur05");
+//        results.add(followerData7);
+//        Follower followerData8 = new Follower("apple1","pann22");
+//        results.add(followerData8);
+//        Follower followerData9= new Follower("banana","katy9000");
+//        results.add(followerData9);
+//        Follower followerData10 = new Follower("sea2","yakk50");
+//        results.add(followerData10);
+//        Follower followerData11 = new Follower("girl2","yeah");
+//        results.add(followerData11);
 
         // Add some more dummy data for testing
         return results;

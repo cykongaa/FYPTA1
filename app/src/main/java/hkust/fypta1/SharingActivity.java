@@ -109,8 +109,8 @@ public class SharingActivity extends AppCompatActivity {
 //        /*ImageView image2 = (ImageView) findViewById(R.id.sharing2);
 //        image2.setImageResource(R.drawable.foodexpo);
 //*/
-        ImageView user_icon = (ImageView) findViewById(R.id.userIcon);
-        user_icon.setImageResource(getId(followerData.getUserIcon(),R.drawable.class));
+//        ImageView user_icon = (ImageView) findViewById(R.id.userIcon);
+//        user_icon.setImageResource(getId(followerData.getUserIcon(),R.drawable.class));
 //
         TextView user_name = (TextView) findViewById(R.id.userName);
         user_name.setText(followerData.getFollowerName());

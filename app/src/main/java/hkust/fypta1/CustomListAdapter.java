@@ -53,7 +53,8 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
 
-        holder.iconView.setImageResource(getId(listData.get(position).getUserIcon(),R.drawable.class));
+        if (!listData.get(position).getUserIcon().equals("null")&&!listData.get(position).getUserIcon().equals("")){
+        holder.iconView.setImageResource(getId(listData.get(position).getUserIcon(),R.drawable.class));}
         holder.userNameView.setText( listData.get(position).getFollowerName());
 
         return convertView;

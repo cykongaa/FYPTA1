@@ -1,16 +1,35 @@
 package hkust.fypta1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +49,11 @@ public class FollowerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public String currentUserName;
+    public ListView lv1;
+
+    ArrayList<Follower> follower_list = new ArrayList<>();
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -63,14 +87,111 @@ public class FollowerFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        currentUserName="admin";
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_follower, container, false);
 
-        return inflater.inflate(R.layout.fragment_follower, container, false);
+        lv1=(ListView) view.findViewById(R.id.custom_list);
+
+        new ConnectTask().execute("following");
+
+        Button following = (Button) view.findViewById(R.id.followingButton);
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ConnectTask().execute("following");
+            }
+        });
+        Button follower =(Button) view.findViewById(R.id.followerButton);
+        follower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new ConnectTask().execute("follower");
+            }
+        });
+        return view;
+    }
+
+    class ConnectTask extends AsyncTask<String,Void,ArrayList<Follower>> {
+
+
+        protected ArrayList<Follower> doInBackground(String... k) {
+
+
+            try {
+                URL url = null;
+
+                if (k[0].equals("following")) {
+                    url = new URL("http://10.89.218.32:8080/fyp.webservice/getData/getFollower/?user=" + currentUserName);
+                } else if (k[0].equals("follower")) {
+                    url = new URL("http://10.89.218.32:8080/fyp.webservice/getData/getFollowing/?follower=" + currentUserName);
+                }
+
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                InputStream stream = new BufferedInputStream(urlConnection.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
+                StringBuilder builder = new StringBuilder();
+
+                String inputString;
+                while ((inputString = bufferedReader.readLine()) != null) {
+                    builder.append(inputString);
+                }
+
+                JSONArray obj = new JSONArray(builder.toString());
+
+                for (int n = 0; n < obj.length(); n++) {
+                    JSONObject object = obj.getJSONObject(n);
+                    String user_name = object.getString("userName");
+                    String follower_name = object.getString("followerName");
+                    String follower_icon = object.getString("Icon");
+
+                    Log.d("Event", follower_name);
+                    Follower following = new Follower(user_name, follower_name, follower_icon);
+                    follower_list.add(following);
+                }
+
+                urlConnection.disconnect();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return follower_list;
+        }
+
+        protected void onProgressUpdate() {
+
+        }
+
+
+        protected void onPostExecute(ArrayList<Follower> follower_list) {
+
+
+            lv1.setAdapter(new CustomListAdapter(getActivity(), follower_list));
+            lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                    Object o = lv1.getItemAtPosition(position);
+                    Follower followerData = (Follower) o;
+
+                    Intent intent = new Intent(getActivity(), SharingActivity.class);
+                    intent.putExtra("follower", followerData);
+                    startActivity(intent);
+
+                }
+            });
+
+
+        }
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

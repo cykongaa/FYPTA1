@@ -39,17 +39,17 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(drawable);
 
         Button locationButton = (Button) findViewById(R.id.locationButton);
-        locationButton.setOnClickListener(e->{
-            GPSTracker gps = gps = new GPSTracker(SearchActivity.this);
-            if(gps.canGetLocation()) {
-                Double latitude = gps.getLatitude(); // returns latitude
-                Double longitude = gps.getLongitude(); // returns longitude
-
-                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-            }else{
-                gps.showSettingsAlert();
-            }
-        });
+//        locationButton.setOnClickListener(e->{
+//            GPSTracker gps = gps = new GPSTracker(SearchActivity.this);
+//            if(gps.canGetLocation()) {
+//                Double latitude = gps.getLatitude(); // returns latitude
+//                Double longitude = gps.getLongitude(); // returns longitude
+//
+//                Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+//            }else{
+//                gps.showSettingsAlert();
+//            }
+//        });
     }
 
     @Override
